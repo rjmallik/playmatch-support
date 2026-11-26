@@ -39,7 +39,7 @@
   <p id="lead">A friend shared a pickup game with you on <b>PlayMatch</b>.</p>
 
   <div id="ok">
-    <a id="open" class="btn primary" href="#">Open in PlayMatch</a>
+    <a id="open" class="btn primary" href="#">I have PlayMatch: open the game</a>
     <a class="btn secondary" href="https://apps.apple.com/app/id6836152488">Get PlayMatch on the App Store</a>
     <p><b>New to PlayMatch?</b></p>
     <ol>
@@ -69,12 +69,8 @@
     }
     var appLink = 'playmatch://game/' + id;
     document.getElementById('open').href = appLink;
-    // Try the app once on arrival; if it is not installed nothing
-    // happens and the buttons above stay on screen.
-    if (/iPhone|iPad|iPod/.test(navigator.userAgent) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-      setTimeout(function () { location.href = appLink; }, 300);
-    }
+    // No automatic open: without the app installed, Safari shows an
+    // "address is invalid" error. The visitor taps a button instead.
   })();
 </script>
 </body>
